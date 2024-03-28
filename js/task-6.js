@@ -11,13 +11,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const boxesContainer = document.getElementById("boxes");
 
   createButton.addEventListener("click", function () {
-    const amount = parseInt(input.value);
-    if (amount < 1 || amount > 100 || isNaN(amount)) {
+    const count = parseInt(input.value);
+    if (count < 1 || count > 100 || isNaN(count)) {
       alert("Будь ласка, введіть число від 1 до 100.");
       return;
     }
 
-    createBoxes(amount);
+    createBoxes(count);
     input.value = "";
   });
 
@@ -25,16 +25,20 @@ document.addEventListener("DOMContentLoaded", function () {
     destroyBoxes();
   });
 
-  function createBoxes(amount) {
+  function createBoxes(count) {
     boxesContainer.innerHTML = "";
+    
     let size = 30;
-    for (let i = 0; i < amount; i++) {
+    
+    for (let i = 0; i < count; i++) {
       const box = document.createElement("div");
       box.classList.add("box");
       box.style.backgroundColor = getRandomHexColor();
       box.style.width = `${size}px`;
       box.style.height = `${size}px`;
+      
       boxesContainer.appendChild(box);
+      
       size += 10;
     }
   }
